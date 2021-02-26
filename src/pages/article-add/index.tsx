@@ -7,7 +7,7 @@ import './view-article.scss'
 import BaseInfo from './base-info'
 import Edit from './edit'
 import HeaderTittle from '../../common/components/header-title'
-import { addArticle, editeArt, getArtId, mdArt } from '../../utils/api'
+import { addArticle, editeArt, getArticles, mdArt } from '../../utils/api'
 import { useQuery } from '../../utils/index'
 
 export default function AddArticle (props: RouteComponentProps) {
@@ -44,13 +44,15 @@ export default function AddArticle (props: RouteComponentProps) {
 
   async function add (values: any, tagIds: Array<string>, categoriesIds: Array<string>, authorIds: Array<string>) {
     const params = {...values, ...acontent }
+    console.log('params: ')
+    console.log(params)
     const { data } = await addArticle({
       title: params.title,
       content: params.content,
       editContent: params.editContent,
       desc: params.desc,
-      top: params.top,
-      publish: params.publish,
+      top: params.top || false,
+      publish: params.publish || false,
       tag: tagIds,
       category: categoriesIds,
       author: authorIds,
@@ -93,7 +95,7 @@ export default function AddArticle (props: RouteComponentProps) {
     (async () => {
       const id = query.get('id')
       if (id) {
-        const { data } = await getArtId(id)
+        const { data } = await getArticles({id: id})
         if (data.code) {
           setArticle(data.result)
           setEditContent(data.result.content)

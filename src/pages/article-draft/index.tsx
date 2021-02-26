@@ -3,7 +3,7 @@ import { Table, Divider, message } from 'antd'
 import { RouteComponentProps } from 'react-router'
 import { columns } from './article-config'
 import PageLayout from '../../common/components/page-layout'
-import { getArts, delArt } from '../../utils/api'
+import { getArticles, delArt } from '../../utils/api'
 import './index.scss'
 const ArticleList = (props:RouteComponentProps) => {
   const [list, setList] = useState([])
@@ -13,7 +13,7 @@ const ArticleList = (props:RouteComponentProps) => {
   useEffect(() => {
     (async () => {
       setLoading(true)
-      const { data } = await getArts({current_page: page.current, state: 2})
+      const { data } = await getArticles({current_page: page.current, state: 2})
       if (data.code) {
         const { list, pagination } = data.result
         setList(list || [])

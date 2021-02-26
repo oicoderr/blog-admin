@@ -4,8 +4,8 @@ import { API_ROOT } from './config'
 // 登录
 export const login = (params = {}) => http.post('user/login/', { ...params })
 
-// 获取文章列表
-export const getArts = (params = {}) => http.get('article/get', { params })
+// 获取文章列表 - 获取文章详情
+export const getArticles = (params = {}) => http.get('article/get', { params })
 
 // 添加文章
 export const addArticle = (params = {}) => http.put('article/add', { ...params })
@@ -19,8 +19,6 @@ export const delArt = (id: string) => http.delete(`article/delete/${id}`)
 // 文章md转化
 export const mdArt = (params = {}) => http.post(`article/transform`, { ...params })
 
-// 获取文章详情
-export const getArtId = (id: string, params = {}) => http.get(`articleDetails/get?id=${id}`, { params })
 
 // 获取超级用户
 export const getSuperUser = (params = {}) => http.get(`super_user/get`, { params })

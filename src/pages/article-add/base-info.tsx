@@ -180,12 +180,12 @@ class BaseInfo extends React.Component<IFormComponentProps<any>> {
           </Col>
           <Col span={10}>
             <Form.Item label="是否置顶" rules={[{ required: true, message: '是否置顶' }]}>
-              <Switch checkedChildren="置顶" unCheckedChildren="正常" checked={ article.top} onChange={(checked: boolean) => this.switchChange('top', checked) } />
+              <Switch checkedChildren="置顶" unCheckedChildren="正常" checked={ article.top == '1' } onChange={(checked: boolean) => this.switchChange('top', checked) } />
             </Form.Item>
           </Col>
           <Col span={14}>
             <Form.Item label="是否公开" rules={[{ required: true, message: '是否是公开文章!' }]}>
-              <Switch checkedChildren="公开" unCheckedChildren="私密" checked={ article.publish } onChange={(checked: boolean) => this.switchChange('publish', checked) } />
+              <Switch checkedChildren="公开" unCheckedChildren="私密" checked={ article.publish == '1' } onChange={(checked: boolean) => this.switchChange('publish', checked) } />
             </Form.Item>
           </Col>
         </Form>

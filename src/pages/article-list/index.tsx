@@ -4,7 +4,7 @@ import { RouteComponentProps } from 'react-router'
 import { TablePaginationConfig } from 'antd/es/table'
 import { columns } from './article-config'
 import PageLayout from '../../common/components/page-layout'
-import { getArts, delArt } from '../../utils/api'
+import { getArticles, delArt } from '../../utils/api'
 import { QuestionCircleOutlined } from '@ant-design/icons';
 import './index.scss'
 
@@ -20,7 +20,7 @@ const ArticleList = (props:RouteComponentProps) => {
   useEffect(() => {
     (async () => {
       setLoading(true)
-      const { data } = await getArts({current_page: page.current, state: 1})
+      const { data } = await getArticles({current_page: page.current, state: 1})
       
       if (data.code === 200) {
         const { list, pagination } = data.result
