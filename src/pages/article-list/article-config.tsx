@@ -66,7 +66,7 @@ export const columns = [
     render: (text: string, record: any, dataIndex: number) => {
       return(
         <div>
-          {`浏览：${record.viewCount}、喜欢：${record.likeCount}`}
+          {`浏览：${record.viewCount}、喜欢：${record.likeCount}、是否置顶：${record.top}、是否私密: ${record.publish}`}
         </div>
       )
     }

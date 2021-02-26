@@ -13,7 +13,7 @@ function LoginForm (props: (FormProps & RouterProps)) {
     const { username, password } = values
     const { data } = await login({'username': username, 'password': password})
     if (data.code === 200) {
-      window.localStorage.setItem('TOKEN', JSON.stringify(data.data.tokens))
+      window.localStorage.setItem('TOKEN', JSON.stringify(data.result.tokens))
       history.push('/')
     }
   };

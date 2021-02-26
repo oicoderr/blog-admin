@@ -101,7 +101,7 @@ export default function AddArticle (props: RouteComponentProps) {
           setAcontent({content: data.result.content, editContent: data.result.editContent})
         }
       } else {
-        setArticle({'top': '0', 'publish': '1'})
+        setArticle({'top': false, 'publish': true})
         setEditContent('')
         setTitle('添加文章')
         setAcontent({content: '', editContent: ''})
