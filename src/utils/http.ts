@@ -2,31 +2,54 @@ import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
 import { message, Modal } from 'antd'
 import { API_ROOT } from './config'
 import isLogin from './login'
-const LOGIN_PATH = 'user/login'
+import {handleCheckRefreshToken} from './api'
+const LOGIN_PATH = 'user/login/'
 const confirm = Modal.confirm;
 export const http = axios.create({
   baseURL: API_ROOT
 })
 
 export const getAccessToken = () => {
-  let str = ''
+  let str: string = ''
   if (window.localStorage.getItem('TOKEN')) {
-    // str = `Naice ${JSON.parse(window.localStorage.getItem('TOKEN') || '').token}`
     str = `${JSON.parse(window.localStorage.getItem('TOKEN') || '').access_token}`
   }
   return str
 }
+
+export const getRefreshToken= () => {
+  let refresh_token: string = ''
+  if (window.localStorage.getItem('TOKEN')) {
+    refresh_token = `${JSON.parse(window.localStorage.getItem('TOKEN') || '').refresh_token}`
+  }
+  return refresh_token
+}
 // 拦截器
 http.interceptors.request.use((config: AxiosRequestConfig) => {
-  config.headers['x-access_token'] = getAccessToken()
+  config.headers['x-access-token'] = getAccessToken()
+  config.headers['channel'] = 'admin'
   return config
 }, (error) => {
   return Promise.reject(error)
 })
 
 http.interceptors.response.use((response: AxiosResponse<any>): AxiosResponse<any> | Promise<AxiosResponse<any>> => {
-  console.log('login:')
-  console.log(response)
+  let { data, status} = response
+  // console.log('login:');console.log(response)
+  // access_token 过期, 返回新access_token, 及 refresh_token
+  if (status && status === 253) {
+    // console.error('status:' + status, data.error)
+    let newToken = handleCheckRefreshToken({'refresh_token': getRefreshToken()})
+    newToken.then((v)=>{
+      window.localStorage.setItem('TOKEN', JSON.stringify(v.data.result.tokens))
+    })
+  }
+  // refesh_token 过期
+  if (status && status === 252) {
+    // console.error('status:' + status, data.error)
+    window.location.href = '/login'
+  }
+
   if (response.config.url !== LOGIN_PATH && !isLogin()) {
     confirm({
       title: '提示!',
@@ -37,7 +60,7 @@ http.interceptors.response.use((response: AxiosResponse<any>): AxiosResponse<any
         window.location.href = '/login'
       }
     })
-  } else if (response.data.code !== 200) {
+  } else if (response.data.code !== 200 && [250,251,252,253].includes(status)) {
     message.error(response.data.message || response.data.error)
   }
   return response

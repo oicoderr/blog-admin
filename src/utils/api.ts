@@ -1,6 +1,10 @@
 
 import {http, getAccessToken } from './http'
 import { API_ROOT } from './config'
+
+// refresh_token 刷新access_token
+export const handleCheckRefreshToken = (params = {}) => http.post('token/access', { ...params })
+
 // 登录
 export const login = (params = {}) => http.post('user/login/', { ...params })
 
