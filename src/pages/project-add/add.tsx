@@ -16,7 +16,7 @@ function AddTag (props: any) {
     console.log(values, state)
     let id = query.get('id')
     id ? edit({
-      descript: state.descript,
+      desc: state.desc,
       github: state.github,
       icon: state.icon,
       title: state.title,
@@ -55,7 +55,7 @@ function AddTag (props: any) {
         <Input value={state.title} placeholder="请输入项目名称" onChange={e => inputChange('title', e)} />
       </Form.Item>
       <Form.Item label="项目描述" rules={[{ required: true, message: '请填写项目描述!' }]}>
-        <Input value={state.descript} placeholder="请填写项目描述" onChange={e => inputChange('descript', e)} />
+        <Input value={state.desc} placeholder="请填写项目描述" onChange={e => inputChange('desc', e)} />
       </Form.Item>
       <Form.Item label="浏览地址" rules={[{ required: true, message: '请填写项目浏览地址!' }]}>
         <Input value={state.view} placeholder="请填写项目浏览地址" onChange={e => inputChange('view', e)} />

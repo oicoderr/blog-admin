@@ -64,13 +64,13 @@ export const fetchComment = (params = {}) => http.get('comment/get', { params })
 export const delComment = (id: string) => http.delete(`comment/delete/${id}`)
 
 // 编辑评论
-export const editeComment = (id: string, params = {}) => http.post(`comment/edite/${id}`, {...params})
+export const editeComment = (id: string, params = {}) => http.post(`comment/editor/${id}`, {...params})
 
 // 新增项目
 export const addProject = (params = {}) => http.put('project/add', {...params})
 
 // 编辑项目
-export const editeProject = (id: string, params = {}) => http.post(`project/edite/${id}`, { ...params })
+export const editeProject = (id: string, params = {}) => http.post(`project/editor/${id}`, { ...params })
 
 // 删除项目
 export const delProject = (id: string) => http.delete(`project/delete/${id}`)

@@ -55,7 +55,7 @@ http.interceptors.response.use((response: AxiosResponse<any>): AxiosResponse<any
       title: '提示!',
       content: '用户信息已过期，请点击确定后重新登录。',
       okText: '确定',
-      cancelText: '取消',
+      // cancelText: '取消',
       onOk() {
         window.location.href = '/login'
       }
@@ -70,7 +70,7 @@ http.interceptors.response.use((response: AxiosResponse<any>): AxiosResponse<any
       title: '提示!',
       content: '用户信息已过期，请点击确定后重新登录。',
       okText: '确定',
-      cancelText: '取消',
+      // cancelText: '取消',
       onOk() {
         window.location.href = '/login'
       }

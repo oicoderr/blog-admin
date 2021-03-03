@@ -47,7 +47,7 @@ const Projects = (props:any) => {
       dataSource={tableData}
       bordered
       size='middle'
-      rowKey='_id'
+      rowKey='id'
       pagination={page} />
   </PageLayout>
 }
