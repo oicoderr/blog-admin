@@ -27,17 +27,17 @@ export const columns:Comments<any>[] = [
   },
   {
     title: '留言邮箱',
-    key: 'author.email',
-    dataIndex: 'author.email',
+    key: 'email',
+    dataIndex: 'email',
     width: 200,
-    render: (text, record, dataIndex) => <span>{record.author.email}</span>
+    render: (text, record, dataIndex) => <span>{record.email}</span>
   },
   {
     title: 'web地址',
-    key: 'author.site',
-    dataIndex: 'author.site',
+    key: 'site',
+    dataIndex: 'site',
     width: 300,
-    render: (text, record, dataIndex) => <span>{record.author.site}</span>
+    render: (text, record, dataIndex) => <span>{record.site}</span>
   },
   {
     title: '状态',

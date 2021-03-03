@@ -20,7 +20,7 @@ const ArticleList = (props:RouteComponentProps) => {
   useEffect(() => {
     (async () => {
       setLoading(true)
-      const { data } = await getArticles({current_page: page.current, state: 1})
+      const { data } = await getArticles({current_page: page.current})
       
       if (data.code === 200) {
         const { list, pagination } = data.result

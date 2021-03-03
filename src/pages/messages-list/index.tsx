@@ -37,7 +37,7 @@ const Comments = () => {
   // 保存
   async function save (record:any) {
     if (editPrams.index === null) return
-    const {data} = await editeHero(record._id, {state: editPrams.state})
+    const {data} = await editeHero(record.id, {state: editPrams.state})
     setRefresh(refresh+1)
     message.success(data.message)
   }
@@ -52,7 +52,7 @@ const Comments = () => {
   }
   // 删除
   async function del (record:any) {
-    const {data} = await delHero(record._id)
+    const {data} = await delHero(record.id)
     setRefresh(refresh+1)
     message.success(data.message)
   }
@@ -82,7 +82,7 @@ const Comments = () => {
         dataSource={tableData}
         bordered
         size='middle'
-        rowKey='_id' />
+        rowKey='id' />
     </PageLayout>
   </>
 }

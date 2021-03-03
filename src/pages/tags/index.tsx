@@ -30,7 +30,7 @@ const Tag = () => {
   useEffect(() => {
     (async () => {
       const { data } = await fetchTag()
-      setTableData(data.result || [])
+      setTableData(data.result.list || [])
       cancel()
     })()
   }, [refresh])

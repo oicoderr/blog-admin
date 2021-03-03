@@ -69,7 +69,7 @@ export const columns = [
           <p>
             浏览：{record.viewCount} &emsp; 喜欢：{record.likeCount}&emsp;&ensp;
             <span style={{color:'#00CC00'}}>是否置顶：{record.top +''}</span>&emsp;
-            <span style={{color:'#FF8F59'}}>是否私密: {record.publish +''}</span>
+            <span style={{color:'#FF8F59'}}>是否公开: {record.publish +''}</span>
           </p>
         </div>
       )

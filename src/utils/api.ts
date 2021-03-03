@@ -55,7 +55,7 @@ export const fetchHero = (params = {}) => http.get('hero/get', { params })
 export const delHero = (id: string) => http.delete(`hero/delete/${id}`)
 
 // 编辑留言墙
-export const editeHero = (id: string, params = {}) => http.post(`hero/edite/${id}`, {...params})
+export const editeHero = (id: string, params = {}) => http.post(`hero/editor/${id}`, {...params})
 
 // 获取文章评论
 export const fetchComment = (params = {}) => http.get('comment/get', { params })
