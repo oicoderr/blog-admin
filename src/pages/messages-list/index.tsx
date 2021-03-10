@@ -75,7 +75,7 @@ const Comments = () => {
   })
   const components = { body: { cell: EditCell } }
   return <>
-    <PageLayout title='评论管理'>
+    <PageLayout title='留言管理'>
       <Table components={components}
         className="messages"
         columns={tableColumns as any}

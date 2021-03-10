@@ -14,10 +14,17 @@ export const columns:Comments<any>[] = [
     render: (text, record, dataIndex) => <span>{dataIndex}</span>
   },
   {
+    title: '昵称',
+    dataIndex: 'fans.name',
+    width: 150,
+    key: 'fans.name',
+    render: (text, record, dataIndex) => <span>{record.fans.name}</span>
+  },
+  {
     title: '留言内容',
     dataIndex: 'content',
     width: 300,
-    key: 'content'
+    key: 'content',
   },
   {
     title: 'ip地址',
@@ -30,14 +37,14 @@ export const columns:Comments<any>[] = [
     key: 'email',
     dataIndex: 'email',
     width: 200,
-    render: (text, record, dataIndex) => <span>{record.email}</span>
+    render: (text, record, dataIndex) => <span>{record.fans.email}</span>
   },
   {
     title: 'web地址',
     key: 'site',
     dataIndex: 'site',
     width: 300,
-    render: (text, record, dataIndex) => <span>{record.site}</span>
+    render: (text, record, dataIndex) => <span>{record.fans.site}</span>
   },
   {
     title: '状态',

@@ -34,7 +34,7 @@ class BaseInfo extends React.Component<IFormComponentProps<any>> {
     const superUser = await getSuperUser()
     const categories  = await getCategory()
     this.setState({
-      allTags: data.result || [],
+      allTags: data.result.list || [],
       allAuthor: superUser.data.result || [],
       allCategories: categories.data.result || [],
     })

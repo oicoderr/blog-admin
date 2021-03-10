@@ -14,6 +14,16 @@ export const columns:Comments<any>[] = [
     render: (text, record, dataIndex) => <span>{dataIndex}</span>
   },
   {
+    title: '文章信息',
+    dataIndex: 'article',
+    width: 300,
+    key: 'article',
+    render: (text, record, dataIndex) => <div>
+      <li>标题：{record.target.title}</li>
+      <li>ID：{record.target.id}</li>
+    </div>
+  },
+  {
     title: '留言内容',
     dataIndex: 'content',
     width: 300,
@@ -27,17 +37,27 @@ export const columns:Comments<any>[] = [
   },
   {
     title: '留言邮箱',
-    key: 'author.email',
-    dataIndex: 'author.email',
+    key: 'from_.email',
+    dataIndex: 'from_.email',
     width: 200,
-    render: (text, record, dataIndex) => <span>{record.author.email}</span>
+    render: (text, record, dataIndex) => <span>{record.from_.email}</span>
   },
   {
     title: 'web地址',
-    key: 'author.site',
-    dataIndex: 'author.site',
+    key: 'from_.site',
+    dataIndex: 'from_.site',
     width: 300,
-    render: (text, record, dataIndex) => <span>{record.author.site}</span>
+    render: (text, record, dataIndex) => <span>{record.from_.site}</span>
+  },
+  {
+    title: '留言者基本信息',
+    key: 'from_.info',
+    dataIndex: 'from_.info',
+    width: 300,
+    render: (text, record, dataIndex) => <div>
+      <li>昵称：{record.from_.name}</li>
+      <li>ID：{record.from_.id}</li>
+    </div>
   },
   {
     title: '状态',

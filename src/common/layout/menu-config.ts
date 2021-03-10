@@ -6,7 +6,6 @@ import {
   MessageOutlined,
   IssuesCloseOutlined,
   ProjectOutlined,
-  PlayCircleOutlined
 } from '@ant-design/icons';
 export interface menuType {
   title: string,
@@ -38,18 +37,6 @@ export const menuConfig:menuType[] = [
         key: 'article-add',
         path: '/article-add'
       },
-      /*
-      {
-        title: '草稿箱',
-        key: 'article-draft',
-        path: '/article-draft'
-      },
-      {
-        title: '文章归类',
-        key: 'article-classify',
-        path: '/article-classify'
-      }
-      */
     ]
   },
   {
@@ -80,7 +67,7 @@ export const menuConfig:menuType[] = [
         path: '/category'
       },
       {
-        title: '新增标签',
+        title: '新增类目',
         key: 'category-add',
         path: '/category-add'
       }
@@ -132,21 +119,4 @@ export const menuConfig:menuType[] = [
       }
     ]
   },
-  {
-    title: '音乐管理',
-    key: 'music',
-    icon: PlayCircleOutlined,
-    children: [
-      {
-        title: '音乐列表',
-        key: 'music-list',
-        path: '/music'
-      },
-      {
-        title: '新增音乐',
-        key: 'music-add',
-        path: '/music-add'
-      }
-    ]
-  }
 ]

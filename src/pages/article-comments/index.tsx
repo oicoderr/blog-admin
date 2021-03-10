@@ -30,13 +30,13 @@ const Comments = () => {
   useEffect(() => {
     (async () => {
       const { data } = await fetchComment()
-      setTableData(data.result.data || [])
+      setTableData(data.result.list || [])
       cancel()
     })()
   }, [refresh])
   async function save (record:any) {
     if (editPrams.index === null) return
-    const {data} = await editeComment(record._id, {state: editPrams.state})
+    const {data} = await editeComment(record.id, {state: editPrams.state})
     setRefresh(refresh+1)
     message.success(data.message)
   }
@@ -48,7 +48,7 @@ const Comments = () => {
     setEditingKey(-1)
   }
   async function del (record:any) {
-    const {data} = await delComment(record._id)
+    const {data} = await delComment(record.id)
     setRefresh(refresh+1)
     message.success(data.message)
   }
