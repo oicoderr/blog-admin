@@ -52,7 +52,7 @@
 
 ### server
 
-+ python + tornado + mysql
++ python + tornado + nginx + mysql 
 + 鉴别参数是否正确
 + jwt登录权限
 + Surpervisor 进程守护

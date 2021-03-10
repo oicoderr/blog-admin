@@ -5,7 +5,7 @@ import { addTag } from '../../utils/api'
 
 function AddTag (props: any) {
   const onFinish = async (values: any) => {
-    console.log('Success:', values);
+    // console.log('Success:', values);
     const res = await addTag(values)
     if (res.data.code) {
       message.success(res.data.message)

@@ -5,7 +5,7 @@ import { addCategory } from '../../utils/api'
 
 function AddCategory (props: any) {
   const onFinish = async (values: any) => {
-    console.log('Success:', values);
+    // console.log('Success:', values);
     const res = await addCategory(values)
     if (res.data.code) {
       message.success(res.data.message)

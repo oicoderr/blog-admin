@@ -9,7 +9,7 @@ function LoginForm (props: (FormProps & RouterProps)) {
   const { history } = props
   const iconColor = { color: 'rgba(0,0,0,.25)' }
   const onFinish = async (values: any) => {
-    console.log('Success:', values);
+    // console.log('Success:', values);
     const { username, password } = values
     const { data } = await login({'username': username, 'password': password})
     if (data.code === 200) {
