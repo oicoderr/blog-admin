@@ -16,11 +16,11 @@
 
 ## 相关链接
 
-博客地址：[Pydw-blog](https://github.com/naihe138/naice-blog)
+博客地址：[Pydw-blog](https://github.com/Iovedw/tornado-blog-web)
 
-博客管理：[Pydw-blog-admin](https://github.com/naihe138/naice-blog-admin)
+博客管理：[Pydw-blog-admin](https://github.com/Iovedw/tornado-blog-admin)
 
-博客后台：[python-tornado](https://github.com/naihe138/naice-blog-koa)
+博客后台：[python-tornado]()
 
 
 ### 后台相关截图：
@@ -52,7 +52,7 @@
 
 ### server
 
-+ python + tornado + nginx + mysql 
++ python + tornado + nginx + mysql + redis
 + 鉴别参数是否正确
 + jwt登录权限
 + Surpervisor 进程守护
