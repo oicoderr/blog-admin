@@ -24,14 +24,19 @@ function EditCell (props: any) {
 }
 
 const Category = () => {
-  const [tableData, setTableData] = useState([]) 
+  const [tableData, setTableData] = useState([])
+  const [loading, setLoading] = useState(false)
   const [editingKey, setEditingKey] = useState(-1)
   const [refresh, setRefresh] = useState(1)
   useEffect(() => {
     (async () => {
+      setLoading(true)
       const { data } = await getCategory()
-      setTableData(data.result || [])
-      cancel()
+      if (data.code === 200) {
+        setTableData(data.result || [])
+        cancel()
+        setLoading(false)
+      }
     })()
   }, [refresh])
   async function save (record:any) {
@@ -79,7 +84,7 @@ const Category = () => {
   const components = { body: { cell: EditCell } }
   return <>
     <PageLayout title='类目列表'>
-      <Table components={components} columns={tableColumns as any } dataSource={tableData} bordered size='middle' rowKey='id' />
+      <Table components={components} loading={loading} columns={tableColumns as any } dataSource={tableData} bordered size='middle' rowKey='id' />
     </PageLayout>
   </>
 }

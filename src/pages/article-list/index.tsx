@@ -21,7 +21,6 @@ const ArticleList = (props:RouteComponentProps) => {
     (async () => {
       setLoading(true)
       const { data } = await getArticles({current_page: page.current})
-      
       if (data.code === 200) {
         const { list, pagination } = data.result
         setList(list)

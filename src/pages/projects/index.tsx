@@ -14,12 +14,15 @@ function EditCell (props: any) {
 const Projects = (props:any) => {
   const [tableData, setTableData] = useState([]) 
   const [refresh, setRefresh] = useState(1)
+  const [loading, setLoading] = useState(false)
   const [page, setPage] = useState({ current: 1, total: 0 })
   useEffect(() => {
     (async () => {
+      setLoading(true)
       const { data } = await fetchProject({current_page: page.current})
       setTableData(data.result.list || [])
       setPage({current: data.result.pagination.current_page, total: data.result.pagination.total})
+      setLoading(false)
     })()
   }, [refresh])
 
@@ -45,6 +48,7 @@ const Projects = (props:any) => {
     <Table components={components}
       columns={tableColumns as any}
       dataSource={tableData}
+      loading={loading}
       bordered
       size='middle'
       rowKey='id'

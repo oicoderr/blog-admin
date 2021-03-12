@@ -26,12 +26,17 @@ function EditCell (props: any) {
 const Comments = () => {
   const [tableData, setTableData] = useState([]) 
   const [editingKey, setEditingKey] = useState(-1)
+  const [loading, setLoading] = useState(false)
   const [refresh, setRefresh] = useState(1)
   useEffect(() => {
     (async () => {
+      setLoading(true)
       const { data } = await fetchHero()
-      setTableData(data.result.list || [])
-      cancel()
+      if (data.code === 200) {
+        setTableData(data.result.list || [])
+        cancel()
+        setLoading(false)
+      }
     })()
   }, [refresh])
   // 保存
@@ -80,6 +85,7 @@ const Comments = () => {
         className="messages"
         columns={tableColumns as any}
         dataSource={tableData}
+        loading={loading}
         bordered
         size='middle'
         rowKey='id' />

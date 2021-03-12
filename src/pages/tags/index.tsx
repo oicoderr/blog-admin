@@ -27,11 +27,17 @@ const Tag = () => {
   const [tableData, setTableData] = useState([]) 
   const [editingKey, setEditingKey] = useState(-1)
   const [refresh, setRefresh] = useState(1)
+  const [loading, setLoading] = useState(false)
+
   useEffect(() => {
     (async () => {
+      setLoading(true)
       const { data } = await fetchTag()
-      setTableData(data.result.list || [])
-      cancel()
+      if (data.code == 200){
+        setTableData(data.result.list || [])
+        cancel()
+        setLoading(false)
+      }
     })()
   }, [refresh])
   async function save (record:any) {
@@ -80,7 +86,7 @@ const Tag = () => {
   const components = { body: { cell: EditCell } }
   return <>
     <PageLayout title='标签列表'>
-      <Table components={components} columns={tableColumns as any } dataSource={tableData} bordered size='middle' rowKey='id' />
+      <Table components={components} loading={loading} columns={tableColumns as any } dataSource={tableData} bordered size='middle' rowKey='id' />
     </PageLayout>
   </>
 }

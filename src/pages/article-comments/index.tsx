@@ -26,12 +26,17 @@ function EditCell (props: any) {
 const Comments = () => {
   const [tableData, setTableData] = useState([]) 
   const [editingKey, setEditingKey] = useState(-1)
+  const [loading, setLoading] = useState(false)
   const [refresh, setRefresh] = useState(1)
   useEffect(() => {
     (async () => {
+      setLoading(true)
       const { data } = await fetchComment()
-      setTableData(data.result.list || [])
-      cancel()
+      if (data.code === 200) {
+        setTableData(data.result.list || [])
+        cancel()
+        setLoading(false)
+      }
     })()
   }, [refresh])
   async function save (record:any) {
@@ -72,7 +77,7 @@ const Comments = () => {
   const components = { body: { cell: EditCell } }
   return <>
     <PageLayout title='评论管理'>
-      <Table components={components} columns={tableColumns as any} dataSource={tableData} bordered size='middle' rowKey='_id' />
+      <Table components={components} loading={loading} columns={tableColumns as any} dataSource={tableData} bordered size='middle' rowKey='_id' />
     </PageLayout>
   </>
 }

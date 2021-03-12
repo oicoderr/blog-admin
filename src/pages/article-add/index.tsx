@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react'
-import { Button, message, Modal } from 'antd'
+import { Button, message, Modal, Spin } from 'antd'
 import { useLocation } from 'react-router-dom'
 import { RouteComponentProps } from 'react-router'
 import './index.scss'
@@ -17,6 +17,7 @@ export default function AddArticle (props: RouteComponentProps) {
   const [editContent, setEditContent] = useState('') // 编辑文章
   const [title, setTitle] = useState('')
   const [visible, setVisible] = useState(false);// 文章预览
+  const [loading, setLoading] = useState(false)
   const query = useQuery()
   let location = useLocation()
   const viewArticleDom = useRef<any>(null);
@@ -44,8 +45,6 @@ export default function AddArticle (props: RouteComponentProps) {
 
   async function add (values: any, tagIds: Array<string>, categoriesIds: Array<string>, authorIds: Array<string>) {
     const params = {...values, ...acontent }
-    console.log('params: ')
-    console.log(params)
     const { data } = await addArticle({
       title: params.title,
       content: params.content,
@@ -65,6 +64,7 @@ export default function AddArticle (props: RouteComponentProps) {
       props.history.push('/article')
     }
   }
+
   async function edit (values: any, id: string, tagIds: Array<string>, categoriesIds: Array<string>, authorIds: Array<string>) {
     const params = {...values, ...acontent}
     const { data } = await editeArt(id, {
@@ -89,10 +89,12 @@ export default function AddArticle (props: RouteComponentProps) {
   const editChange = (c: string, e: string) => {
     setAcontent({content: c, editContent: e})
   }
+
   const saveFormRef = (formRef: any) => { myform = formRef }
   // 获取编辑数据
   useEffect(() => {
     (async () => {
+      setLoading(true)
       const id = query.get('id')
       if (id) {
         const { data } = await getArticles({id: id})
@@ -101,25 +103,26 @@ export default function AddArticle (props: RouteComponentProps) {
           setEditContent(data.result.content)
           setTitle('编辑文章')
           setAcontent({content: data.result.content, editContent: data.result.editContent})
+          setLoading(false)
         }
       } else {
         setArticle({'top': false, 'publish': true})
         setEditContent('')
         setTitle('添加文章')
         setAcontent({content: '', editContent: ''})
+        setLoading(false)
       }
     })()
   }, [location])
   return (
     <>
       <HeaderTittle title={title} />
-      <div className="p20">
+      <Spin wrapperClassName="p20" spinning={loading}>
         <BaseInfo submit={getFormData} wrappedComponentRef={saveFormRef} article={article} />
         <Edit content={editContent} editChange={editChange} />
         <div className='btnbox'>
           <Button type='primary' style={{width: '100px'}} onClick={() => submit()}>提 交</Button>
-          <Button type="primary" style={{width: '100px', marginLeft: '20px'}} onClick={openViewArticle}>预览</Button>
-          {/* <Button danger style={{width: '100px', marginLeft: '20px'}} onClick={() => submit()}>存草稿</Button> */}
+          {/* <Button type="primary" style={{width: '100px', marginLeft: '20px'}} onClick={openViewArticle}>预览</Button> */}
         </div>
         <Modal
           title="文章预览"
@@ -133,7 +136,7 @@ export default function AddArticle (props: RouteComponentProps) {
             <div ref={viewArticleDom} className="theme-default-content content__default"></div>
           </div>
         </Modal>
-      </div>
+      </Spin>
     </>
   )
 }
