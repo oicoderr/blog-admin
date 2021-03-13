@@ -18,19 +18,19 @@ export interface iconType {
 export const peojectIcon:Array<iconType> = [
   {
     class: 'icon-react',
-    text: '&#xe64c;'
+    text: '&#xf21a;'
   },
   {
     class: 'icon-vuejs',
-    text: '&#xe641;'
+    text: '&#xe640;'
   },
   {
     class: 'icon-nginx',
-    text: '&#xe63c;'
+    text: '&#xec30;'
   },
   {
     class: 'icon-angular',
-    text: '&#xe616;'
+    text: '&#xeb3c;'
   },
   {
     class: 'icon-434-npm',
@@ -41,15 +41,51 @@ export const peojectIcon:Array<iconType> = [
     text: '&#xe77f;'
   },
   {
-    class: 'icon-iconfontyouxihudong',
-    text: '&#xe639;'
+    class: 'icon-game',
+    text: '&#xe6df;'
   },
   {
-    class: 'icon-code1',
-    text: '&#xe69f;'
+    class: 'icon-code',
+    text: '&#xe60e;'
   },
   {
-    class: 'icon-nodejs',
-    text: '&#xe989;'
-  }
+    class: 'icon-node-js',
+    text: '&#xf1fd;'
+  },
+  {
+    class: 'icon-tornado',
+    text: '&#xe6db;'
+  },
+  {
+    class: 'icon-django',
+    text: '&#xeb7b;'
+  },
+  {
+    class: 'icon-flask',
+    text: '&#xeb93;'
+  },
+  {
+    class: 'icon-python',
+    text: '&#xec66;'
+  },
+  {
+    class: 'icon-redis',
+    text: '&#xec7c;'
+  },
+  {
+    class: 'icon-mysql',
+    text: '&#xe627;'
+  },
+  {
+    class: 'icon-mongodb',
+    text: '&#xec21;'
+  },
+  {
+    class: 'icon-JS',
+    text: '&#xe651;'
+  },
+  {
+    class: 'icon-activity',
+    text: '&#xe6de;'
+  },
 ]
