@@ -55,8 +55,8 @@ export default function AddArticle (props: RouteComponentProps) {
       tag: tagIds,
       category: categoriesIds,
       author: authorIds,
-      viewCount: params.viewCount,
-      likeCount: params.likeCount,
+      viewCount: params.viewCount || 1,
+      likeCount: params.likeCount || 1,
       cover: params.cover
     })
     if (data.code) {

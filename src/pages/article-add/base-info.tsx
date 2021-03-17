@@ -158,23 +158,20 @@ class BaseInfo extends React.Component<IFormComponentProps<any>> {
           </Col>
           
           <Col span={10}>
-            <Form.Item label="阅读量" rules={[{ required: true, message: '请输入阅读量' }]}>
+            <Form.Item label="阅读量" rules={[{ required: true}]}>
               <InputNumber 
-                // defaultValue={viewCount}
                 value={viewCount}
                 onChange={(e) => this.inputNumberChange('viewCount', e)}
                 formatter={value => `${value}`}
-                // parser={value => value.replace(/\$\s?|(,*)/g, '')}
               />
             </Form.Item>
           </Col>
           <Col span={10}>
-          <Form.Item label="点赞量" rules={[{ required: true, message: '请输入点赞量' }]}>
+          <Form.Item label="点赞量" rules={[{ required: true}]}>
               <InputNumber 
                 value={likeCount}
                 onChange={(e) => this.inputNumberChange('likeCount', e)} 
                 formatter={value => `${value}`}
-                // parser={value => value.replace(/\D/g,'')}
               />
             </Form.Item>
           </Col>
