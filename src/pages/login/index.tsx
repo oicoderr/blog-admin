@@ -1,5 +1,5 @@
 import React from 'react'
-import { Form, Input, Button } from 'antd'
+import { Form, Input, Button, message } from 'antd'
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { FormProps } from 'antd/lib/form/Form'
 import { RouterProps } from 'react-router'
@@ -15,6 +15,9 @@ function LoginForm (props: (FormProps & RouterProps)) {
     if (data.code === 200) {
       window.localStorage.setItem('TOKEN', JSON.stringify(data.result.tokens))
       history.push('/')
+    } else {
+      message.warning(data.message);
+      window.localStorage.clear()
     }
   };
 
