@@ -11,7 +11,7 @@ function LoginForm (props: (FormProps & RouterProps)) {
   const onFinish = async (values: any) => {
     // console.log('Success:', values);
     const { username, password } = values
-    const { data } = await login({'username': username, 'password': password})
+    const { data } = await login({ 'username': username, 'password': password })
     if (data.code === 200) {
       window.localStorage.setItem('TOKEN', JSON.stringify(data.result.tokens))
       history.push('/')
@@ -31,12 +31,12 @@ function LoginForm (props: (FormProps & RouterProps)) {
         onFinishFailed={onFinishFailed}>
         <p className="title">Blog-管理后台</p>
         <Form.Item name="username"
-          rules={[{ required: true, message: '请大人输入账号!' }]}>
-            <Input prefix={<UserOutlined style={iconColor} />} placeholder='请大人输入账号!' />
+          rules={[{ required: true, message: '请大人输入账号!' }, { pattern: new RegExp(/^[a-zA-Z0-9_-]{4,16}$/), message: '请大人输入正确账号!' }]}>
+          <Input prefix={<UserOutlined style={iconColor} />} placeholder='请大人输入账号!' />
         </Form.Item>
         <Form.Item name="password"
-          rules={[{ required: true, message: '请大人输入密码!' }]}>
-          <Input.Password prefix={<LockOutlined style={iconColor} />} placeholder='请大人输入密码!'/>
+          rules={[{ required: true, message: '请大人输入密码!' }, { pattern: new RegExp('^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{6,20}$'), message: '请大人输入正确密码!' }]}>
+          <Input.Password prefix={<LockOutlined style={iconColor} />} placeholder='请大人输入密码!' />
         </Form.Item>
         <Form.Item>
           <Button type="primary" htmlType="submit" className="login-form-button">
@@ -45,7 +45,7 @@ function LoginForm (props: (FormProps & RouterProps)) {
         </Form.Item>
       </Form>
       <div className="loginMask"></div>
-    </div>
+    </div >
   )
 }
 
