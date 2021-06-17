@@ -16,7 +16,7 @@ function LoginForm (props: (FormProps & RouterProps)) {
       window.localStorage.setItem('TOKEN', JSON.stringify(data.result.tokens))
       history.push('/')
     } else {
-      message.warning(data.message);
+      message.warning(data.message || data.error);
       window.localStorage.clear()
     }
   };
