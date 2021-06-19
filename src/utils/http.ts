@@ -46,17 +46,17 @@ http.interceptors.response.use(
   ): AxiosResponse<any> | Promise<AxiosResponse<any>> => {
     let { data, status } = response;
     // access_token 过期, 返回新access_token, 及 refresh_token
-    if (status && status === 253) {
-      let newToken = handleCheckRefreshToken({
-        refresh_token: getRefreshToken(),
-      });
-      newToken.then((v) => {
-        window.localStorage.setItem(
-          "TOKEN",
-          JSON.stringify(v.data.result.tokens)
-        );
-      });
-    }
+    // if (status && status === 253) {
+    //   let newToken = handleCheckRefreshToken({
+    //     refresh_token: getRefreshToken(),
+    //   });
+    //   newToken.then((v) => {
+    //     window.localStorage.setItem(
+    //       "TOKEN",
+    //       JSON.stringify(v.data.result.tokens)
+    //     );
+    //   });
+    // }
 
     if (response.config.url !== LOGIN_PATH && !isLogin()) {
       confirm({
@@ -71,7 +71,7 @@ http.interceptors.response.use(
           window.location.href = "/login";
         },
       });
-    } else if (response.data.code !== 200 && [251, 252].includes(status)) {
+    } else if (response.data.code !== 200 && [251, 252, 253].includes(status)) {
       /*
       251 access_token 不存在验证信息 | token被篡改! | 未知的错误! | 错误的信息载体
       252 refesh_token 过期 / 未通过
