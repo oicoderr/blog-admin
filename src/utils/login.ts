@@ -5,12 +5,12 @@
  * @returns { boolean }
  */
 export default () => {
-	if (!window.localStorage.getItem('TOKEN')) {
-		return false
-	}
-  const tokens = JSON.parse(window.localStorage.getItem('TOKEN') || '')
-	if (!tokens.access_token || !tokens.refresh_token) {
-		return false
-	}
-	return true
-}
+  if (!sessionStorage.getItem('TOKEN')) {
+    return false;
+  }
+  const token = JSON.parse(sessionStorage.getItem('TOKEN') || '');
+  if (!token.access_token) {
+    return false;
+  }
+  return true;
+};
