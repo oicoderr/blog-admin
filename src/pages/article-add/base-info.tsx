@@ -76,7 +76,7 @@ class BaseInfo extends React.Component<IFormComponentProps<any>> {
   }
 
   render() {
-    const { allCategories, categoriesId, reading, title, body } = this.state.article;
+    const { allCategories, categoriesId, reading, title, body } = this.state;
 
     return (
       <div className="baseInfo">
