@@ -1,21 +1,19 @@
-import React from 'react'
-import { Route } from 'react-router-dom'
-import loadable from '@loadable/component'
+import React from 'react';
+import { Route } from 'react-router-dom';
+import loadable from '@loadable/component';
 
-const Layout = loadable(() => import('../common/layout'))
-const Login = loadable(() => import('../pages/login'))
-const ArticleList = loadable(() => import('../pages/article-list'))
-const AddArticle = loadable(() => import('../pages/article-add'))
-const ArticleComments = loadable(() => import('../pages/article-comments'))
-const AddMessage = loadable(() => import('../pages/message-add'))
-const MessageList = loadable(() => import('../pages/messages-list'))
-const ProjectAdd = loadable(() => import('../pages/project-add'))
-const Projects = loadable(() => import('../pages/projects'))
-const Tags = loadable(() => import('../pages/tags'))
-const TagAdd = loadable(() => import('../pages/tag-add'))
-const Category = loadable(() => import('../pages/categories'))
-const CategoryAdd = loadable(() => import('../pages/category-add'))
-const Home = loadable(() => import('../pages/home'))
+const Layout = loadable(() => import('../common/layout'));
+const Login = loadable(() => import('../pages/login'));
+const ArticleList = loadable(() => import('../pages/article-list'));
+const AddArticle = loadable(() => import('../pages/article-add'));
+const ArticleComments = loadable(() => import('../pages/article-comments'));
+const AddMessage = loadable(() => import('../pages/message-add'));
+const MessageList = loadable(() => import('../pages/messages-list'));
+const ProjectAdd = loadable(() => import('../pages/project-add'));
+const Projects = loadable(() => import('../pages/projects'));
+const Category = loadable(() => import('../pages/categories'));
+const CategoryAdd = loadable(() => import('../pages/category-add'));
+const Home = loadable(() => import('../pages/home'));
 // export interface routeType {
 //   path: string,
 //   component: React.SFC
@@ -24,7 +22,7 @@ const Home = loadable(() => import('../pages/home'))
 export const routes = [
   {
     path: '/login',
-    component: Login
+    component: Login,
   },
   {
     path: '/',
@@ -32,61 +30,48 @@ export const routes = [
     children: [
       {
         path: '/article',
-        component: ArticleList
+        component: ArticleList,
       },
       {
         path: '/article-add',
-        component: AddArticle
+        component: AddArticle,
       },
       {
         path: '/discuss',
-        component: ArticleComments
+        component: ArticleComments,
       },
       {
         path: '/message-add',
-        component: AddMessage
+        component: AddMessage,
       },
       {
         path: '/message',
-        component: MessageList
+        component: MessageList,
       },
       {
         path: '/project-add',
-        component: ProjectAdd
+        component: ProjectAdd,
       },
       {
         path: '/project',
-        component: Projects
-      },
-      {
-        path: '/tags',
-        component: Tags
-      },
-      {
-        path: '/tags-add',
-        component: TagAdd
+        component: Projects,
       },
       {
         path: '/category',
-        component: Category
+        component: Category,
       },
       {
         path: '/category-add',
-        component: CategoryAdd
+        component: CategoryAdd,
       },
       {
         path: '/',
-        component: Home
-      }
-    ]
-  }
-]
+        component: Home,
+      },
+    ],
+  },
+];
 
 export function RouteWithSubRoutes(route: any) {
-  return (
-    <Route
-      path={route.path}
-      render={props => <route.component {...props } {...route} /> }
-    />
-  )
+  return <Route path={route.path} render={props => <route.component {...props} {...route} />} />;
 }

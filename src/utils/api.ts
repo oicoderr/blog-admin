@@ -7,15 +7,17 @@ export const handleCheckRefreshToken = (params = {}) => http.post('token/access'
 // 登录
 export const login = (params = {}) => http.post('v1/auth/', { ...params });
 
-// 获取文章列表 - 获取文章详情
-export const getArticles = (params = {}) => http.get('article/get', { params });
+// 获取文章列表
+export const getArticles = (params = {}) => http.get('v1/post', { params });
+
+// 获取文章详情
+export const getArticleDetail = (id: string, params = {}) => http.get(`v1/post/${id}`, { params });
 
 // 添加文章
-export const addArticle = (params = {}) => http.put('article/add', { ...params });
+export const addArticle = (params = {}) => http.post('v1/admin/post', { ...params });
 
-// 修改文章
-export const editeArt = (id: string, params = {}) =>
-  http.post(`article/editor/${id}`, { ...params });
+// 更新文章
+export const editeArt = (id: string, params = {}) => http.put(`v1/admin/post/${id}`, { ...params });
 
 // 删除文章
 export const delArt = (id: string) => http.delete(`article/delete/${id}`);
@@ -23,20 +25,14 @@ export const delArt = (id: string) => http.delete(`article/delete/${id}`);
 // 文章md转化
 export const mdArt = (params = {}) => http.post(`article/transform`, { ...params });
 
-// 获取超级用户
-export const getSuperUser = (params = {}) => http.get(`super_user/get`, { params });
-
 // 获取所有类目
-export const getCategory = (params = {}) => http.get(`categories/get`, { params });
+export const getCategory = (params = {}) => http.get(`v1/category`, { params });
 // 编辑类目
 export const editeCategory = (params = {}) => http.post(`category/editor`, { ...params });
 // 添加类目
 export const addCategory = (params = {}) => http.put('category/add', { ...params });
 // 删除标签
 export const delCategory = (id: string) => http.delete(`category/delete/${id}`);
-
-// 获取所有的标签
-export const fetchTag = (params = {}) => http.get('tag/get', { params });
 
 // 编辑标签
 export const editeTag = (params = {}) => http.post('tag/editor', { ...params });
